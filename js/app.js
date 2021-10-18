@@ -9,7 +9,7 @@ let isWinner, gameStatus, playerSum, dealerSum, card, cardValue
 
 /*--------- Cached Element References ---------*/
 let deckEl = document.getElementById('deck')
-let reset = document.querySelector('.btn')
+let reset = document.querySelector('.reset')
 let message = document.getElementById('message')
 /*-------------- Event Listeners --------------*/
 deckEl.addEventListener('click', handleClick)
