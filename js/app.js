@@ -2,7 +2,7 @@
 let deck = []
 let playerHand = []
 let computerHand = []
-let isWinner, gameStatus
+let isWinner, gameStatus, playerSum, computerSum
 
 /*------------- Variables (state) -------------*/
 
@@ -22,6 +22,8 @@ function init() {
   deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
   playerHand = []
   computerHand = []
+  playerSum = null
+  computerSum = null
   isWinner = null
   render()
 }
@@ -30,7 +32,7 @@ function render() {
   cardValue(deck)
   
   //randomly select cards from deck to computer hand
-  // computerCards()
+  starterCards()
   
   //- Create render function displaying two drawn cards for each player (computer and player).
 
@@ -45,7 +47,7 @@ function handleClick() {
     render()
   }
 }
-function computerCards() {
+function starterCards() {
   for (let i = 0; 2 > computerHand.length; i++) { 
     if (deck.length > 0){
       let randIdx = Math.floor(Math.random() * deck.length)
@@ -54,17 +56,27 @@ function computerCards() {
     }
     render()
   }
+    for (let i = 0; 2 > playerHand.length; i++) { 
+      if (deck.length > 0){
+        let randIdx = Math.floor(Math.random() * deck.length)
+        let cardPicked = deck.splice(randIdx, 1)
+        playerHand.push(cardPicked)
+      }
+      render()
+    }
 }
 function cardValue(deck) {
-deck.splice(13,38)
+deck.splice(13,39)
 let valueDeck = deck
 let deckValues = valueDeck.map((card) => {
-  console.log(card)
   let splitCard = card.split('').slice(1, 3).join('')
   return splitCard
 })
 console.log(deckValues)
+if (deckValues === '10', 'J', 'Q', 'K'){ return 10 }
+else {return `${deckValues}`}
 }
+
 function cardCompare() {
 
 }
