@@ -29,6 +29,7 @@ function init() {
 }
 function render() {
   starterCards()
+  //Show the cards that are dealt at the start
   //Ask player if they want to hit or stand
     //If player stands determine the value of cards
     //If player wants to hit, ADD that card to total of hand
@@ -39,11 +40,9 @@ function render() {
       //If sum of both Dealer and Player is exact.. print PUSH!!
 }
 function handleClick() {
-  if (playerHand.length < 2){
-    let randIdx = Math.floor(Math.random() * deck.length)
-    let cardPicked = deck.splice(randIdx, 1)
-    playerHand.push(cardPicked)
-  }
+  let randIdx = Math.floor(Math.random() * deck.length)
+  let cardPicked = deck.splice(randIdx, 1)
+  playerHand.push(cardPicked)
   render()
 }
 function starterCards() {
