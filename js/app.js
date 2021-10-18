@@ -9,11 +9,11 @@ let isWinner, gameStatus
 
 /*--------- Cached Element References ---------*/
 let deckEl = document.getElementById('deck')
-
+let reset = document.querySelector('.btn')
 
 /*-------------- Event Listeners --------------*/
 deckEl.addEventListener('click', handleClick)
-
+reset.addEventListener('click', init)
 
 /*----------------- Functions -----------------*/
 init()
@@ -36,5 +36,4 @@ function handleClick() {
     playerHand.push(cardPicked)
     render()
   }
-  
 }
