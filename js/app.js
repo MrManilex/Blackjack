@@ -47,3 +47,9 @@ function computerCards() {
     render()
   }
 }
+function cardValue() {
+
+}
+function cardCompare() {
+  
+}
