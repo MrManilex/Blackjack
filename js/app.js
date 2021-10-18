@@ -20,7 +20,6 @@ init()
 
 function init() {
   deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
-  // valueDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
   playerHand = []
   dealerHand = []
   playerSum = null
@@ -28,36 +27,17 @@ function init() {
   isWinner = null
   render()
 }
-
 function render() {
-  //Create values for each of the card strings
-  
-  //randomly select cards from deck to computer hand
-
-  
-  //- Create render function displaying two drawn cards for each player (computer and player).
-  
-  //Create the game status message
-  
+  starterCards()
+  //Ask player if they want to hit or stand
+    //If player stands determine the value of cards
+    //If player wants to hit, ADD that card to total of hand
+      //If player's hand EXCEEDS 21, player loses!! print BUST
+    //Compare sum of player to sum of dealer comparing it to also 21
+      //If sum of Player is closer to 21 than the dealer change gameStatus to You win!
+      //If sum of Dealer is closer to 21 print you lost :P!!!
+      //If sum of both Dealer and Player is exact.. print PUSH!!
 }
-
-function cardValues(card) {
-  if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
-  card === 'dQ' || card === 'hQ' || card === 'cQ' || card === 'sQ' ||
-  card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
-  card === 'd10' || card === 'h10' || card === 'c10' || card === 's10'
-    ){cardValue = 10}
-    else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){cardValue = 9}
-    else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){cardValue = 8}
-    else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){cardValue = 7}
-    else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){cardValue = 6}
-    else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){cardValue = 5}
-    else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){cardValue = 4}
-    else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){cardValue = 3}
-    else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){cardValue = 2}
-  return cardValue
-}
-
 function handleClick() {
   if (playerHand.length < 2){
     let randIdx = Math.floor(Math.random() * deck.length)
@@ -66,7 +46,6 @@ function handleClick() {
   }
   render()
 }
-
 function starterCards() {
   for (let i = 0; 2 > dealerHand.length; i++) { 
     if (deck.length > 0){
@@ -84,6 +63,22 @@ function starterCards() {
     }
     render()
   }
+}
+function cardValues(card) {
+  if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
+  card === 'dQ' || card === 'hQ' || card === 'cQ' || card === 'sQ' ||
+  card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
+  card === 'd10' || card === 'h10' || card === 'c10' || card === 's10'
+    ){cardValue = 10}
+    else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){cardValue = 9}
+    else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){cardValue = 8}
+    else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){cardValue = 7}
+    else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){cardValue = 6}
+    else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){cardValue = 5}
+    else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){cardValue = 4}
+    else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){cardValue = 3}
+    else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){cardValue = 2}
+  return cardValue
 }
 
 function cardCompare() {
