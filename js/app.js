@@ -28,12 +28,14 @@ function init() {
 function render() {
   //Create values for each of the card strings
   cardValue(deck)
+  
+  //randomly select cards from deck to computer hand
+  // computerCards()
+  
   //- Create render function displaying two drawn cards for each player (computer and player).
 
-  //randomly select cards from deck to computer hand
-  computerCards()
-
   //Create the game status message
+
 }
 function handleClick() {
   if (playerHand.length < 2){
@@ -53,16 +55,22 @@ function computerCards() {
     render()
   }
 }
-function cardValue(nDeck) {
+function cardValue(deck) {
 //filter cards
-let valueDeck = nDeck.map((card, idx) => {
-  let cType = card[idx]
-  // console.log(cType)\
-  let cValue = cType.split(', ')
-  console.log(cValue)
-  })
-  // console.log(valueDeck)
+let valueDeck = deck
+let deckValues = valueDeck.map((card) => {
+  let splitCard = card.split('').slice(1, 3)
+  return splitCard
+})
+console.log(deckValues)
 }
 function cardCompare() {
 
 }
+
+// Bust - basically losing (if hand is over 21)
+// Hit - drawing an extra card
+// Stand - to not take any further cards - also known as 'sitting'.
+// Push - DRAWWW (card value is evenly matched for both players)
+// Upcard - the dealer's exposed card, seen by all players.
+// Hole Card - the dealer's unseen card.
