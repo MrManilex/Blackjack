@@ -1,0 +1,14 @@
+body {
+  display: grid;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: cadetblue;
+}
+h2 {
+  text-align: center;
+  background-color: rgb(57, 228, 177);
+}
+div.deck {
+  display: flex;
+  justify-content: center;
+}
