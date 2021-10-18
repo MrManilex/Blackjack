@@ -10,7 +10,7 @@ let isWinner, gameStatus
 /*--------- Cached Element References ---------*/
 let deckEl = document.getElementById('deck')
 let reset = document.querySelector('.btn')
-
+let message = document.getElementById('message')
 /*-------------- Event Listeners --------------*/
 deckEl.addEventListener('click', handleClick)
 reset.addEventListener('click', init)
@@ -27,10 +27,14 @@ function init() {
 }
 function render() {
   //- Create render function displaying two drawn cards for each player (computer and player).
+
+  //randomly select cards from deck to computer hand
   computerCards()
+
+  //Create the game status message
 }
 function handleClick() {
-  if (deck.length > 0){
+  if (playerHand.length < 2){
     let randIdx = Math.floor(Math.random() * deck.length)
     let cardPicked = deck.splice(randIdx, 1)
     playerHand.push(cardPicked)
@@ -48,8 +52,8 @@ function computerCards() {
   }
 }
 function cardValue() {
-
+//filter cards
 }
 function cardCompare() {
-  
+
 }
