@@ -26,6 +26,8 @@ function init() {
   render()
 }
 function render() {
+  //Create values for each of the card strings
+  cardValue(deck)
   //- Create render function displaying two drawn cards for each player (computer and player).
 
   //randomly select cards from deck to computer hand
@@ -51,8 +53,15 @@ function computerCards() {
     render()
   }
 }
-function cardValue() {
+function cardValue(nDeck) {
 //filter cards
+let valueDeck = nDeck.map((card, idx) => {
+  let cType = card[idx]
+  // console.log(cType)\
+  let cValue = cType.split(', ')
+  console.log(cValue)
+  })
+  // console.log(valueDeck)
 }
 function cardCompare() {
 
