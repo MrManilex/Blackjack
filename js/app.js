@@ -30,5 +30,11 @@ function render() {
   
 }
 function handleClick() {
-
+  if (deck.length > 0){
+    let randIdx = Math.floor(Math.random() * deck.length)
+    let cardPicked = deck.splice(randIdx, 1)
+    playerHand.push(cardPicked)
+    render()
+  }
+  
 }
