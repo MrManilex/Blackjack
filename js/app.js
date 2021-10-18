@@ -56,10 +56,11 @@ function computerCards() {
   }
 }
 function cardValue(deck) {
-//filter cards
+deck.splice(13,38)
 let valueDeck = deck
 let deckValues = valueDeck.map((card) => {
-  let splitCard = card.split('').slice(1, 3)
+  console.log(card)
+  let splitCard = card.split('').slice(1, 3).join('')
   return splitCard
 })
 console.log(deckValues)
