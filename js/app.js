@@ -27,13 +27,23 @@ function init() {
 }
 function render() {
   //- Create render function displaying two drawn cards for each player (computer and player).
-  
+  computerCards()
 }
 function handleClick() {
   if (deck.length > 0){
     let randIdx = Math.floor(Math.random() * deck.length)
     let cardPicked = deck.splice(randIdx, 1)
     playerHand.push(cardPicked)
+    render()
+  }
+}
+function computerCards() {
+  for (let i = 0; 2 > computerHand.length; i++) { 
+    if (deck.length > 0){
+      let randIdx = Math.floor(Math.random() * deck.length)
+      let cardPicked = deck.splice(randIdx, 1)
+      computerHand.push(cardPicked)
+    }
     render()
   }
 }
