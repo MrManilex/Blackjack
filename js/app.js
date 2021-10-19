@@ -34,37 +34,6 @@ function render() {
 
 }
 function theDeal () {
-  //Ask player if they want to hit or stand
-    //If player stands determine the value of cards
-    //If player wants to hit, ADD that card to total of hand
-      //If player's hand EXCEEDS 21, player loses!! print BUST
-    if (playerSum > 21) {
-      isWinner = false
-      render()
-      //Compare sum of player to sum of dealer comparing it to also 21
-      //If sum of Player is closer to 21 than the dealer change gameStatus to You win!
-        //check if they have an ACE
-        // whatIsAce(playerHand)
-        // whatIsAce(dealerHand)
-      //If sum of Dealer is closer to 21 print you lost :P!!!
-      //If sum of both Dealer and Player is exact.. print PUSH!!
-      //IF SUM OF PLAYERR IS 21 PRINT WINNERRRRRRRRRRRRRRR!!!!
-    }
-}
-
-function playerStand() {
-  
-}
-
-function whatIsAce(card) {
-  if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
-    if (playerSum <= 10){
-      return cardValue = 11
-    }else if (playerSum > 10){
-      return cardValue = 1
-    }
-    console.log(cardValue)
-  }
 }
 
 function handleClick() {
@@ -74,49 +43,63 @@ function handleClick() {
   render()
 }
 function starterCards() {
-  for (let i = 0; 2 > dealerHand.length; i++) { 
-    if (deck.length > 0){
-      let randIdx = Math.floor(Math.random() * deck.length)
-      let cardPicked = deck.splice(randIdx, 1)
-      dealerHand.push(cardPicked)
-    }
-    render()
-  }
   for (let i = 0; 2 > playerHand.length; i++) { 
     if (deck.length > 0){
       let randIdx = Math.floor(Math.random() * deck.length)
       let cardPicked = deck.splice(randIdx, 1)
       playerHand.push(cardPicked)
-      cardValue = checkCardValue(cardPicked)
     }
     render()
   }
+}
+function checkHandValue() {
+  //Have a function named checkHandValue() that looks at the array and determines the current value of the player's hand.
+  let newArr = playerHand.map((el) => {
+    return el[0]
+  })
+  console.log(newArr)
 }
 function checkCardValue(card) {
   if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
   card === 'dQ' || card === 'hQ' || card === 'cQ' || card === 'sQ' ||
   card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
   card === 'd10' || card === 'h10' || card === 'c10' || card === 's10'
-    ){cardValue = 10}
-    else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){cardValue = 9}
-    else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){cardValue = 8}
-    else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){cardValue = 7}
-    else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){cardValue = 6}
-    else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){cardValue = 5}
-    else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){cardValue = 4}
-    else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){cardValue = 3}
-    else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){cardValue = 2}
+  ){cardValue = 10}
+  else if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
+    if (playerSum <= 10){return cardValue = 11}
+    else if (playerSum > 10){return cardValue = 1}
+  else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){cardValue = 9}
+  else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){cardValue = 8}
+  else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){cardValue = 7}
+  else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){cardValue = 6}
+  else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){cardValue = 5}
+  else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){cardValue = 4}
+  else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){cardValue = 3}
+  else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){cardValue = 2}
   return cardValue
+  }
 }
+
+
+// function whatIsAce(card) {
+//   if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
+//     if (playerSum <= 10){
+//       return cardValue = 11
+//     }else if (playerSum > 10){
+//       return cardValue = 1
+//     }
+//     console.log(cardValue)
+//   }
+// }
 
 
 
 // valueDeck.splice(13,39)
 // let deckValues = valueDeck.map((card) => {
-//   let splitCard = card.split('').slice(1, 3).join('')
-//   return splitCard
-// })
-// console.log(deckValues)
+  //   let splitCard = card.split('').slice(1, 3).join('')
+  //   return splitCard
+  // })
+  // console.log(deckValues)
 
 // Bust - basically losing (if hand is over 21)
 // Hit - drawing an extra card
