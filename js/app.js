@@ -29,16 +29,44 @@ function init() {
 }
 function render() {
   starterCards()
+  theDeal()
   //Show the cards that are dealt at the start
+
+}
+function theDeal () {
   //Ask player if they want to hit or stand
     //If player stands determine the value of cards
     //If player wants to hit, ADD that card to total of hand
       //If player's hand EXCEEDS 21, player loses!! print BUST
-    //Compare sum of player to sum of dealer comparing it to also 21
+    if (playerSum > 21) {
+      isWinner = false
+      render()
+      //Compare sum of player to sum of dealer comparing it to also 21
       //If sum of Player is closer to 21 than the dealer change gameStatus to You win!
+        //check if they have an ACE
+        // whatIsAce(playerHand)
+        // whatIsAce(dealerHand)
       //If sum of Dealer is closer to 21 print you lost :P!!!
       //If sum of both Dealer and Player is exact.. print PUSH!!
+      //IF SUM OF PLAYERR IS 21 PRINT WINNERRRRRRRRRRRRRRR!!!!
+    }
 }
+
+function playerStand() {
+  
+}
+
+function whatIsAce(card) {
+  if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
+    if (playerSum <= 10){
+      return cardValue = 11
+    }else if (playerSum > 10){
+      return cardValue = 1
+    }
+    console.log(cardValue)
+  }
+}
+
 function handleClick() {
   let randIdx = Math.floor(Math.random() * deck.length)
   let cardPicked = deck.splice(randIdx, 1)
@@ -59,11 +87,12 @@ function starterCards() {
       let randIdx = Math.floor(Math.random() * deck.length)
       let cardPicked = deck.splice(randIdx, 1)
       playerHand.push(cardPicked)
+      cardValue = checkCardValue(cardPicked)
     }
     render()
   }
 }
-function cardValues(card) {
+function checkCardValue(card) {
   if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
   card === 'dQ' || card === 'hQ' || card === 'cQ' || card === 'sQ' ||
   card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
@@ -80,9 +109,6 @@ function cardValues(card) {
   return cardValue
 }
 
-function cardCompare() {
-  
-}
 
 
 // valueDeck.splice(13,39)
