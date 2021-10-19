@@ -34,6 +34,7 @@ function render() {
 
 }
 function theDeal () {
+  checkHandValue(playerHand)
 }
 
 function handleClick() {
@@ -49,35 +50,41 @@ function starterCards() {
       let cardPicked = deck.splice(randIdx, 1)
       playerHand.push(cardPicked)
     }
-    render()
   }
 }
-function checkHandValue() {
-  //Have a function named checkHandValue() that looks at the array and determines the current value of the player's hand.
-  let newArr = playerHand.map((el) => {
+function checkHandValue(theHand) {
+  let newArr = theHand.map((el) => {
     return el[0]
   })
   console.log(newArr)
+  let sum = 0
+  newArr.forEach((el) => {
+    cardValue = checkCardValue(el)
+    console.log(cardValue)
+    sum = sum + cardValue
+    console.log(sum) 
+  })
 }
 function checkCardValue(card) {
   if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
   card === 'dQ' || card === 'hQ' || card === 'cQ' || card === 'sQ' ||
   card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
   card === 'd10' || card === 'h10' || card === 'c10' || card === 's10'
-  ){cardValue = 10}
+  ){return cardValue = 10}
   else if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
-    if (playerSum <= 10){return cardValue = 11}
-    else if (playerSum > 10){return cardValue = 1}
-  else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){cardValue = 9}
-  else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){cardValue = 8}
-  else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){cardValue = 7}
-  else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){cardValue = 6}
-  else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){cardValue = 5}
-  else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){cardValue = 4}
-  else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){cardValue = 3}
-  else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){cardValue = 2}
-  return cardValue
+    // if (playerSum <= 10){return cardValue = 11}
+    // else if (playerSum > 10)
+    {cardValue = 1}
   }
+  else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){ cardValue = 9}
+  else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){ cardValue = 8}
+  else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){ cardValue = 7}
+  else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){ cardValue = 6}
+  else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){ cardValue = 5}
+  else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){ cardValue = 4}
+  else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){ cardValue = 3}
+  else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){ cardValue = 2}
+  return cardValue
 }
 
 
