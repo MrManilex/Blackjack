@@ -28,13 +28,14 @@ function init() {
   render()
 }
 function render() {
-  starterCards()
+  starterCards(playerHand)
+  starterCards(dealerHand)
   theDeal()
-  //Show the cards that are dealt at the start
 
 }
 function theDeal () {
   checkHandValue(playerHand)
+  checkHandValue(dealerHand)
 }
 
 function handleClick() {
@@ -43,12 +44,12 @@ function handleClick() {
   playerHand.push(cardPicked)
   render()
 }
-function starterCards() {
-  for (let i = 0; 2 > playerHand.length; i++) { 
+function starterCards(hand) {
+  for (let i = 0; 2 > hand.length; i++) { 
     if (deck.length > 0){
       let randIdx = Math.floor(Math.random() * deck.length)
       let cardPicked = deck.splice(randIdx, 1)
-      playerHand.push(cardPicked)
+      hand.push(cardPicked)
     }
   }
 }
@@ -56,13 +57,12 @@ function checkHandValue(theHand) {
   let newArr = theHand.map((el) => {
     return el[0]
   })
-  console.log(newArr)
   let sum = 0
   newArr.forEach((el) => {
     cardValue = checkCardValue(el)
-    console.log(cardValue)
     sum = sum + cardValue
-    console.log(sum) 
+    console.log(sum)
+    return sum
   })
 }
 function checkCardValue(card) {
