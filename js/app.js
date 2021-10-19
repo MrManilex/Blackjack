@@ -28,14 +28,16 @@ function init() {
   render()
 }
 function render() {
-  starterCards(playerHand)
   starterCards(dealerHand)
+  starterCards(playerHand)
   theDeal()
 
 }
 function theDeal () {
   checkHandValue(playerHand)
-  checkHandValue(dealerHand)
+  // checkHandValue(dealerHand)
+  console.log(playerSum)
+  // console.log(dealerSum)
 }
 
 function handleClick() {
@@ -64,6 +66,8 @@ function checkHandValue(theHand) {
     console.log(sum)
     return sum
   })
+  playerSum = playerSum + sum
+  // dealerSum = dealerSum + sum
 }
 function checkCardValue(card) {
   if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
