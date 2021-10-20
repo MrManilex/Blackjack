@@ -90,16 +90,13 @@ function starterCards(hand) {
     if (deck.length > 0){
       let randIdx = Math.floor(Math.random() * deck.length)
       let cardPicked = deck.splice(randIdx, 1)
-      hand.push(cardPicked)
+      hand.push(cardPicked[0])
     }
   }
 }
 function checkHandValue(theHand) {
-  let newArr = theHand.map((el) => {
-    return el[0]
-  })
   let sum = 0
-  newArr.forEach((el) => {
+  theHand.forEach((el) => {
     cardValue = checkCardValue(el)
     sum = sum + cardValue
   })
