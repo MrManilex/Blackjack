@@ -2,18 +2,21 @@
 let deck = []
 let playerHand = []
 let dealerHand = []
-let isWinner, gameStatus, playerSum, dealerSum, card, cardValue, playerDiff, dealerDiff, newArr
+let isWinner, gameStatus, playerSum, dealerSum, 
+card, cardValue, playerDiff, dealerDiff, newArr
 
 /*------------- Variables (state) -------------*/
 
 
 /*--------- Cached Element References ---------*/
-let deckEl = document.getElementById('deck')
+let hitEl = document.querySelector('.hit')
 let resetEl = document.querySelector('.reset')
-let message = document.getElementById('message')
 let standEl = document.querySelector('.stand')
+let message = document.getElementById('message')
+let playerHandEl = document.getElementById('player-hand')
+let dealerHandEl = document.getElementById('dealer-hand')
 /*-------------- Event Listeners --------------*/
-deckEl.addEventListener('click', playerHit)
+hitEl.addEventListener('click', playerHit)
 resetEl.addEventListener('click', init)
 standEl.addEventListener('click', playerStand)
 /*----------------- Functions -----------------*/
@@ -29,6 +32,18 @@ function init() {
   theDeal()
 }
 function render() {
+  playerHandEl.innerHTML = ''
+  dealerHandEl.innerHTML = ''
+  playerHand.forEach(card => {
+    let cardToAppend = document.createElement('div')
+    cardToAppend.className = `card xlarge ${card}`
+    playerHandEl.appendChild(cardToAppend)
+  })
+  dealerHand.forEach(card => {
+    let cardToAppend = document.createElement('div')
+    cardToAppend.className = `card xlarge ${card}`
+    dealerHandEl.appendChild(cardToAppend)
+  })
   if(isWinner !== null){
     if (isWinner === 'dealer'){
       console.log('you lost what a shame')
@@ -47,9 +62,7 @@ function theDeal () {
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
   playerDiff = 21 - playerSum
-  // console.log(playerDiff)
   dealerDiff = 21 - dealerSum
-  // console.log(dealerDiff)
   console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
   console.log(`The dealer's sum is ${dealerSum} and their hand is ${dealerHand}`)
   //Probably put here asking if they want to hit or stand
@@ -93,6 +106,7 @@ function starterCards(hand) {
       hand.push(cardPicked[0])
     }
   }
+  render()
 }
 function checkHandValue(theHand) {
   let sum = 0
