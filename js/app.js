@@ -46,17 +46,17 @@ function theDeal () {
   starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
-  console.log(`The player's sum is ${playerSum}`)
-  console.log(`The dealer's sum is ${dealerSum}`)
+  console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
+  console.log(`The dealer's sum is ${dealerSum} and their hand is ${dealerHand}`)
   playerDiff = 21 - playerSum
-  console.log(playerDiff)
+  // console.log(playerDiff)
   dealerDiff = 21 - dealerSum
-  console.log(dealerDiff)
+  // console.log(dealerDiff)
+  //Probably put here asking if they want to hit or stand
   if (playerSum > 21){
     isWinner = 'valueOver'
     render()
   }
-  //Probably put here asking if they want to hit or stand
 }
 function playerHit() {
   let randIdx = Math.floor(Math.random() * deck.length)
@@ -103,6 +103,12 @@ function checkHandValue(theHand) {
     cardValue = checkCardValue(el)
     sum = sum + cardValue
   })
+  if (newArr.includes('dA', 'hA', 'cA', 'sA')){
+    if(sum > 11){
+      sum -= 10
+    }
+  }
+  // console.log(sum)
   return sum
 }
 function checkCardValue(card) {
@@ -124,25 +130,7 @@ function checkCardValue(card) {
   return cardValue
 }
 
-// function whatIsAce(card) {
-//   if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
-//     if (playerSum <= 10){
-//       return cardValue = 11
-//     }else if (playerSum > 10){
-//       return cardValue = 1
-//     }
-//     console.log(cardValue)
-//   }
-// }
-
-
-
-// valueDeck.splice(13,39)
-// let deckValues = valueDeck.map((card) => {
-  //   let splitCard = card.split('').slice(1, 3).join('')
-  //   return splitCard
-  // })
-  // console.log(deckValues)
+// let randomArray = ['sA', 'hA', 'dA', 'sK']
 
 // Bust - basically losing (if hand is over 21)
 // Hit - drawing an extra card
