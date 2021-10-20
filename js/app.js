@@ -31,15 +31,21 @@ function render() {
   starterCards(dealerHand)
   starterCards(playerHand)
   theDeal()
-
 }
 function theDeal () {
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
   console.log(`The player's sum is ${playerSum}`)
   console.log(`The dealer's sum is ${dealerSum}`)
+  if(isWinner !== null){
+    if(playerSum > 21){
+      console.log('hit or stand?')
+    }else {
+      isWinner = 'dealer'
+      console.log('you lost what a shame')
+    }
+  }
 }
-
 function handleClick() {
   let randIdx = Math.floor(Math.random() * deck.length)
   let cardPicked = deck.splice(randIdx, 1)
@@ -63,7 +69,6 @@ function checkHandValue(theHand) {
   newArr.forEach((el) => {
     cardValue = checkCardValue(el)
     sum = sum + cardValue
-    console.log(sum)
   })
   return sum
 }
@@ -85,7 +90,6 @@ function checkCardValue(card) {
   else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){ cardValue = 2}
   return cardValue
 }
-
 
 // function whatIsAce(card) {
 //   if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
