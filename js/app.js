@@ -34,10 +34,10 @@ function render() {
 
 }
 function theDeal () {
-  checkHandValue(playerHand)
-  // checkHandValue(dealerHand)
-  console.log(playerSum)
-  // console.log(dealerSum)
+  playerSum = checkHandValue(playerHand)
+  dealerSum = checkHandValue(dealerHand)
+  console.log(`The player's sum is ${playerSum}`)
+  console.log(`The dealer's sum is ${dealerSum}`)
 }
 
 function handleClick() {
@@ -64,10 +64,9 @@ function checkHandValue(theHand) {
     cardValue = checkCardValue(el)
     sum = sum + cardValue
     console.log(sum)
-    return sum
+    // return sum
   })
-  playerSum = playerSum + sum
-  // dealerSum = dealerSum + sum
+  return sum
 }
 function checkCardValue(card) {
   if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
