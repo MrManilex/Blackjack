@@ -2,7 +2,7 @@
 let deck = []
 let playerHand = []
 let dealerHand = []
-let isWinner, gameStatus, playerSum, dealerSum, card, cardValue, playerDiff, dealerDiff
+let isWinner, gameStatus, playerSum, dealerSum, card, cardValue, playerDiff, dealerDiff, newArr
 
 /*------------- Variables (state) -------------*/
 
@@ -46,12 +46,12 @@ function theDeal () {
   starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
-  console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
-  console.log(`The dealer's sum is ${dealerSum} and their hand is ${dealerHand}`)
   playerDiff = 21 - playerSum
   // console.log(playerDiff)
   dealerDiff = 21 - dealerSum
   // console.log(dealerDiff)
+  console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
+  console.log(`The dealer's sum is ${dealerSum} and their hand is ${dealerHand}`)
   //Probably put here asking if they want to hit or stand
   if (playerSum > 21){
     isWinner = 'valueOver'
@@ -103,12 +103,6 @@ function checkHandValue(theHand) {
     cardValue = checkCardValue(el)
     sum = sum + cardValue
   })
-  if (newArr.includes('dA', 'hA', 'cA', 'sA')){
-    if(sum > 11){
-      sum -= 10
-    }
-  }
-  // console.log(sum)
   return sum
 }
 function checkCardValue(card) {
