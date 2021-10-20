@@ -26,13 +26,12 @@ function init() {
   playerSum = null
   dealerSum = null
   isWinner = null
-  render()
+  theDeal()
 }
 function render() {
-  theDeal()
   if(isWinner !== null){
     if (isWinner === 'dealer'){
-      console.log('you lost what a shame') //THIS TOO
+      console.log('you lost what a shame')
     }else if (isWinner === 'player'){
         console.log('WINNER WINNER CHICKEN DINNER')
     }else if (isWinner === 'tie'){
@@ -53,6 +52,10 @@ function theDeal () {
   console.log(playerDiff)
   dealerDiff = 21 - dealerSum
   console.log(dealerDiff)
+  if (playerSum > 21){
+    isWinner = 'valueOver'
+    render()
+  }
   //Probably put here asking if they want to hit or stand
 }
 function playerHit() {
@@ -76,7 +79,8 @@ function compareValues() {
       isWinner = 'tie'
       render()
     }
-  }else {
+  }
+  if (playerSum > 21){
     isWinner = 'valueOver'
     render()
   }
