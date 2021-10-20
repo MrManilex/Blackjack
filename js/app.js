@@ -64,7 +64,6 @@ function checkHandValue(theHand) {
     cardValue = checkCardValue(el)
     sum = sum + cardValue
     console.log(sum)
-    // return sum
   })
   return sum
 }
@@ -74,11 +73,8 @@ function checkCardValue(card) {
   card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
   card === 'd10' || card === 'h10' || card === 'c10' || card === 's10'
   ){return cardValue = 10}
-  else if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA'){
-    // if (playerSum <= 10){return cardValue = 11}
-    // else if (playerSum > 10)
-    {cardValue = 1}
-  }
+  else if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA')
+  {cardValue = 1}
   else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){ cardValue = 9}
   else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){ cardValue = 8}
   else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){ cardValue = 7}
