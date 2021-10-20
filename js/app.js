@@ -2,19 +2,20 @@
 let deck = []
 let playerHand = []
 let dealerHand = []
-let isWinner, gameStatus, playerSum, dealerSum, card, cardValue
+let isWinner, gameStatus, playerSum, dealerSum, card, cardValue, playerDiff, dealerDiff
 
 /*------------- Variables (state) -------------*/
 
 
 /*--------- Cached Element References ---------*/
 let deckEl = document.getElementById('deck')
-let reset = document.querySelector('.reset')
+let resetEl = document.querySelector('.reset')
 let message = document.getElementById('message')
+let standEl = document.querySelector('.stand')
 /*-------------- Event Listeners --------------*/
-deckEl.addEventListener('click', handleClick)
-reset.addEventListener('click', init)
-
+deckEl.addEventListener('click', playerHit)
+resetEl.addEventListener('click', init)
+standEl.addEventListener('click', playerStand)
 /*----------------- Functions -----------------*/
 init()
 
@@ -28,29 +29,57 @@ function init() {
   render()
 }
 function render() {
-  starterCards(dealerHand)
-  starterCards(playerHand)
   theDeal()
+  if(isWinner !== null){
+    if (isWinner === 'dealer'){
+      console.log('you lost what a shame') //THIS TOO
+    }else if (isWinner === 'player'){
+        console.log('WINNER WINNER CHICKEN DINNER')
+    }else if (isWinner === 'tie'){
+      console.log('BUST') 
+    }else if (isWinner === 'valueOver'){
+      console.log('YOU WENT OVER DUMMY')
+    }
+  }
 }
 function theDeal () {
+  starterCards(dealerHand)
+  starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
   console.log(`The player's sum is ${playerSum}`)
   console.log(`The dealer's sum is ${dealerSum}`)
-  if(isWinner !== null){
-    if(playerSum > 21){
-      console.log('hit or stand?')
-    }else {
-      isWinner = 'dealer'
-      console.log('you lost what a shame')
-    }
-  }
+  playerDiff = 21 - playerSum
+  console.log(playerDiff)
+  dealerDiff = 21 - dealerSum
+  console.log(dealerDiff)
+  //Probably put here asking if they want to hit or stand
 }
-function handleClick() {
+function playerHit() {
   let randIdx = Math.floor(Math.random() * deck.length)
   let cardPicked = deck.splice(randIdx, 1)
   playerHand.push(cardPicked)
-  render()
+  theDeal()
+}
+function playerStand() {
+  compareValues()
+}
+function compareValues() {
+  if (playerSum <= 21){
+    if (playerDiff < dealerDiff){
+      isWinner = 'player'
+      render()
+    }else if (playerDiff > dealerDiff){
+      isWinner = 'dealer'
+      render()
+    }else if (playerDiff === dealerDiff){
+      isWinner = 'tie'
+      render()
+    }
+  }else {
+    isWinner = 'valueOver'
+    render()
+  }
 }
 function starterCards(hand) {
   for (let i = 0; 2 > hand.length; i++) { 
