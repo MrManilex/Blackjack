@@ -3,7 +3,7 @@ let deck = []
 let playerHand = []
 let dealerHand = []
 let isWinner, gameStatus, playerSum, dealerSum, 
-card, cardValue, playerDiff, dealerDiff, newArr
+card, cardValue, playerDiff, dealerDiff, newArr, theAce 
 
 /*------------- Variables (state) -------------*/
 
@@ -59,6 +59,8 @@ function render() {
 function theDeal () {
   starterCards(dealerHand)
   starterCards(playerHand)
+  // checkAce(playerHand)
+  // checkAce(dealerHand)
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
   playerDiff = 21 - playerSum
@@ -108,6 +110,8 @@ function starterCards(hand) {
   }
   render()
 }
+// function checkAce(hand) {
+// }
 function checkHandValue(theHand) {
   let sum = 0
   theHand.forEach((el) => {
