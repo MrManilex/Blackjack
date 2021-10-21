@@ -59,10 +59,13 @@ function render() {
 function theDeal () {
   starterCards(dealerHand)
   starterCards(playerHand)
-  // checkAce(playerHand)
-  // checkAce(dealerHand)
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
+  console.log(playerSum)
+  playerSum = checkAce(playerSum)
+  console.log(playerSum)
+  dealerSum = checkAce(dealerSum)
+  console.log(dealerSum)
   playerDiff = 21 - playerSum
   dealerDiff = 21 - dealerSum
   console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
@@ -110,8 +113,6 @@ function starterCards(hand) {
   }
   render()
 }
-// function checkAce(hand) {
-// }
 function checkHandValue(theHand) {
   let sum = 0
   theHand.forEach((el) => {
@@ -138,7 +139,28 @@ function checkCardValue(card) {
   else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){ cardValue = 2}
   return cardValue
 }
-
+function checkAce(sum) {
+  console.log(sum)
+  if(playerHand.includes('dA') === true || 
+  playerHand.includes('hA') === true || 
+  playerHand.includes('cA') === true || 
+  playerHand.includes('sA') === true){
+    if(sum <= 11){
+      console.log('working')
+      sum += 10
+      return sum
+    }
+  }else if(dealerHand.includes('dA') === true || 
+  dealerHand.includes('hA') === true || 
+  dealerHand.includes('cA') === true || 
+  dealerHand.includes('sA') === true){
+    if(sum <= 11){
+      console.log('working')
+      sum += 10
+      return sum
+    }{return sum}
+  }else {return sum}
+}  
 // let randomArray = ['sA', 'hA', 'dA', 'sK']
 
 // Bust - basically losing (if hand is over 21)
