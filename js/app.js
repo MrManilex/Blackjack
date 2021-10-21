@@ -66,13 +66,15 @@ function theDeal () {
   starterCards(dealerHand)
   starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
+  console.log(playerSum)
   dealerSum = checkHandValue(dealerHand)
-  playerSum = checkAce(playerSum)
-  dealerSum = checkAce(dealerSum)
-  playerDiff = 21 - playerSum
-  dealerDiff = 21 - dealerSum
-  console.log(`The dealer's sum is ${dealerSum} and their hand is ${dealerHand}`)
-  console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
+  newPlayerSum = checkAce(playerSum)
+  console.log(newPlayerSum)
+  newDealerSum = checkAce(dealerSum)
+  playerDiff = 21 - newPlayerSum
+  dealerDiff = 21 - newDealerSum
+  console.log(`The dealer's sum is ${newDealerSum} and their hand is ${dealerHand}`)
+  console.log(`The player's sum is ${newPlayerSum} and their hand is ${playerHand}`)
   //Probably put here asking if they want to hit or stand
   message.innerText = 'Hit? or Stand?'
   if (playerSum > 21){
@@ -83,7 +85,7 @@ function theDeal () {
 function playerHit() {
   let randIdx = Math.floor(Math.random() * deck.length)
   let cardPicked = deck.splice(randIdx, 1)
-  playerHand.push(cardPicked)
+  playerHand.push(cardPicked[0])
   theDeal()
 }
 function playerStand() {
@@ -125,8 +127,10 @@ function checkHandValue(theHand) {
   })
   return sum
 }
-function checkAce(sum) {
+function checkAce(sum) { 
+  //THIS NEEDS FIXING WHEN AN HAND HAS 3 OR MORE AND WITH AN ACE
   if (sum === playerSum){
+    console.log('working?')
     if(playerHand.includes('dA') === true || 
     playerHand.includes('hA') === true || 
     playerHand.includes('cA') === true || 
@@ -148,7 +152,7 @@ function checkAce(sum) {
         return sum
       }
     }else {return sum}
-  }
+  }else {return sum}
 }  
 function checkCardValue(card) {
   if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
