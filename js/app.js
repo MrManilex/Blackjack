@@ -36,12 +36,12 @@ function render() {
   dealerHandEl.innerHTML = ''
   playerHand.forEach(card => {
     let cardToAppend = document.createElement('div')
-    cardToAppend.className = `card xlarge ${card}`
+    cardToAppend.className = `card large ${card}`
     playerHandEl.appendChild(cardToAppend)
   })
   dealerHand.forEach(card => {
     let cardToAppend = document.createElement('div')
-    cardToAppend.className = `card xlarge ${card}`
+    cardToAppend.className = `card large back-blue ${card}`
     dealerHandEl.appendChild(cardToAppend)
   })
   if(isWinner !== null){
@@ -61,11 +61,6 @@ function theDeal () {
   starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
-  console.log(playerSum)
-  playerSum = checkAce(playerSum)
-  console.log(playerSum)
-  dealerSum = checkAce(dealerSum)
-  console.log(dealerSum)
   playerDiff = 21 - playerSum
   dealerDiff = 21 - dealerSum
   console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
@@ -121,24 +116,6 @@ function checkHandValue(theHand) {
   })
   return sum
 }
-function checkCardValue(card) {
-  if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
-  card === 'dQ' || card === 'hQ' || card === 'cQ' || card === 'sQ' ||
-  card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
-  card === 'd10' || card === 'h10' || card === 'c10' || card === 's10'
-  ){return cardValue = 10}
-  else if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA')
-  {cardValue = 1}
-  else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){ cardValue = 9}
-  else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){ cardValue = 8}
-  else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){ cardValue = 7}
-  else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){ cardValue = 6}
-  else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){ cardValue = 5}
-  else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){ cardValue = 4}
-  else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){ cardValue = 3}
-  else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){ cardValue = 2}
-  return cardValue
-}
 function checkAce(sum) {
   console.log(sum)
   if(playerHand.includes('dA') === true || 
@@ -161,6 +138,25 @@ function checkAce(sum) {
     }{return sum}
   }else {return sum}
 }  
+function checkCardValue(card) {
+  if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
+  card === 'dQ' || card === 'hQ' || card === 'cQ' || card === 'sQ' ||
+  card === 'dJ' || card === 'hJ' || card === 'cJ' || card === 'sJ' ||
+  card === 'd10' || card === 'h10' || card === 'c10' || card === 's10'
+  ){return cardValue = 10}
+  else if (card === 'dA' || card === 'hA' || card === 'cA' || card === 'sA')
+  {cardValue = 1}
+  else if (card === 'd09' || card === 'h09' || card === 'c09' || card === 's09'){ cardValue = 9}
+  else if (card === 'd08' || card === 'h08' || card === 'c08' || card === 's08'){ cardValue = 8}
+  else if (card === 'd07' || card === 'h07' || card === 'c07' || card === 's07'){ cardValue = 7}
+  else if (card === 'd06' || card === 'h06' || card === 'c06' || card === 's06'){ cardValue = 6}
+  else if (card === 'd05' || card === 'h05' || card === 'c05' || card === 's05'){ cardValue = 5}
+  else if (card === 'd04' || card === 'h04' || card === 'c04' || card === 's04'){ cardValue = 4}
+  else if (card === 'd03' || card === 'h03' || card === 'c03' || card === 's03'){ cardValue = 3}
+  else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){ cardValue = 2}
+  return cardValue
+}
+
 // let randomArray = ['sA', 'hA', 'dA', 'sK']
 
 // Bust - basically losing (if hand is over 21)

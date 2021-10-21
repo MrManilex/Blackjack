@@ -6,14 +6,7 @@ body {
 }
 h2 {
   text-align: center;
-  background-color: rgb(57, 228, 177);
 }
-.deck {
+div#player-hand{
   display: flex;
-  background-color: white;
-  /* justify-content: center; */
-  /* grid-column: 1 / 4; */
-}
-#btn {
-  /* grid-column: 4 / 4; */
 }
