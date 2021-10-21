@@ -41,18 +41,24 @@ function render() {
   })
   dealerHand.forEach(card => {
     let cardToAppend = document.createElement('div')
-    cardToAppend.className = `card large back-blue ${card}`
+    cardToAppend.className = `card large ${card}`
     dealerHandEl.appendChild(cardToAppend)
   })
   if(isWinner !== null){
+    // dealerHand.forEach(card => {
+    //   playerHandEl.classList.remove('back-blue')
+    //   let cardToAppend = document.createElement('div')
+    //   cardToAppend.className = `card large ${card}`
+    //   dealerHandEl.appendChild(cardToAppend)
+    // })
     if (isWinner === 'dealer'){
-      console.log('you lost what a shame')
+      message.innerText = 'you lost what a shame'
     }else if (isWinner === 'player'){
-        console.log('WINNER WINNER CHICKEN DINNER')
+      message.innerText = 'WINNER WINNER CHICKEN DINNER'
     }else if (isWinner === 'tie'){
-      console.log('BUST') 
+      message.innerText = 'PUSHHHH'
     }else if (isWinner === 'valueOver'){
-      console.log('YOU WENT OVER DUMMY')
+      message.innerText = 'YOU WENT OVER DUMMYYYY BUUUUUUUUUUST'
     }
   }
 }
@@ -61,11 +67,14 @@ function theDeal () {
   starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
   dealerSum = checkHandValue(dealerHand)
+  playerSum = checkAce(playerSum)
+  dealerSum = checkAce(dealerSum)
   playerDiff = 21 - playerSum
   dealerDiff = 21 - dealerSum
-  console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
   console.log(`The dealer's sum is ${dealerSum} and their hand is ${dealerHand}`)
+  console.log(`The player's sum is ${playerSum} and their hand is ${playerHand}`)
   //Probably put here asking if they want to hit or stand
+  message.innerText = 'Hit? or Stand?'
   if (playerSum > 21){
     isWinner = 'valueOver'
     render()
@@ -117,26 +126,29 @@ function checkHandValue(theHand) {
   return sum
 }
 function checkAce(sum) {
-  console.log(sum)
-  if(playerHand.includes('dA') === true || 
-  playerHand.includes('hA') === true || 
-  playerHand.includes('cA') === true || 
-  playerHand.includes('sA') === true){
-    if(sum <= 11){
-      console.log('working')
-      sum += 10
-      return sum
-    }
-  }else if(dealerHand.includes('dA') === true || 
-  dealerHand.includes('hA') === true || 
-  dealerHand.includes('cA') === true || 
-  dealerHand.includes('sA') === true){
-    if(sum <= 11){
-      console.log('working')
-      sum += 10
-      return sum
-    }{return sum}
-  }else {return sum}
+  if (sum === playerSum){
+    if(playerHand.includes('dA') === true || 
+    playerHand.includes('hA') === true || 
+    playerHand.includes('cA') === true || 
+    playerHand.includes('sA') === true){
+      if(sum <= 11){
+        sum += 10
+        console.log('player working')
+        return sum
+      }
+    }else {return sum}
+  }else if(sum === dealerSum){
+    if(dealerHand.includes('dA') === true || 
+    dealerHand.includes('hA') === true || 
+    dealerHand.includes('cA') === true || 
+    dealerHand.includes('sA') === true){
+      if(sum <= 11){
+        sum += 10
+        console.log('dealer working')
+        return sum
+      }
+    }else {return sum}
+  }
 }  
 function checkCardValue(card) {
   if (card === 'dK' || card === 'hK' || card === 'cK' || card === 'sK' ||
