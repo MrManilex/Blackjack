@@ -3,7 +3,7 @@ let deck = []
 let playerHand = []
 let dealerHand = []
 let isWinner, gameStatus, playerSum, dealerSum, 
-card, cardValue, playerDiff, dealerDiff, newArr, theAce 
+card, cardValue, playerDiff, dealerDiff, newArr
 
 /*------------- Variables (state) -------------*/
 
@@ -15,6 +15,7 @@ let standEl = document.querySelector('.stand')
 let message = document.getElementById('message')
 let playerHandEl = document.getElementById('player-hand')
 let dealerHandEl = document.getElementById('dealer-hand')
+
 /*-------------- Event Listeners --------------*/
 hitEl.addEventListener('click', playerHit)
 resetEl.addEventListener('click', init)
@@ -41,16 +42,14 @@ function render() {
   })
   dealerHand.forEach(card => {
     let cardToAppend = document.createElement('div')
-    cardToAppend.className = `card large ${card}`
+    cardToAppend.className = `card large back-blue ${card}`
     dealerHandEl.appendChild(cardToAppend)
   })
+  myDivChildren = dealerHandEl.children
+  myDivChildren[1].classList.remove('back-blue')
   if(isWinner !== null){
-    // dealerHand.forEach(card => {
-    //   playerHandEl.classList.remove('back-blue')
-    //   let cardToAppend = document.createElement('div')
-    //   cardToAppend.className = `card large ${card}`
-    //   dealerHandEl.appendChild(cardToAppend)
-    // })
+  myDivChildren[0].classList.remove('back-blue')
+    dealerHandEl.classList.remove('back-blue')
     if (isWinner === 'dealer'){
       message.innerText = 'you lost what a shame'
     }else if (isWinner === 'player'){
@@ -66,16 +65,13 @@ function theDeal () {
   starterCards(dealerHand)
   starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
-  console.log(playerSum)
   dealerSum = checkHandValue(dealerHand)
   newPlayerSum = checkAce(playerSum)
-  console.log(newPlayerSum)
   newDealerSum = checkAce(dealerSum)
   playerDiff = 21 - newPlayerSum
   dealerDiff = 21 - newDealerSum
   console.log(`The dealer's sum is ${newDealerSum} and their hand is ${dealerHand}`)
   console.log(`The player's sum is ${newPlayerSum} and their hand is ${playerHand}`)
-  //Probably put here asking if they want to hit or stand
   message.innerText = 'Hit? or Stand?'
   if (playerSum > 21){
     isWinner = 'valueOver'
@@ -129,7 +125,6 @@ function checkHandValue(theHand) {
 }
 function checkAce(sum) { 
   if (sum === playerSum){
-    console.log('working?')
     if(playerHand.includes('dA') === true || 
     playerHand.includes('hA') === true || 
     playerHand.includes('cA') === true || 
@@ -171,8 +166,6 @@ function checkCardValue(card) {
   else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){ cardValue = 2}
   return cardValue
 }
-
-// let randomArray = ['sA', 'hA', 'dA', 'sK']
 
 // Bust - basically losing (if hand is over 21)
 // Hit - drawing an extra card
