@@ -128,7 +128,6 @@ function checkHandValue(theHand) {
   return sum
 }
 function checkAce(sum) { 
-  //THIS NEEDS FIXING WHEN AN HAND HAS 3 OR MORE AND WITH AN ACE
   if (sum === playerSum){
     console.log('working?')
     if(playerHand.includes('dA') === true || 
@@ -139,7 +138,7 @@ function checkAce(sum) {
         sum += 10
         console.log('player working')
         return sum
-      }
+      }else {return sum}
     }else {return sum}
   }else if(sum === dealerSum){
     if(dealerHand.includes('dA') === true || 
@@ -150,7 +149,7 @@ function checkAce(sum) {
         sum += 10
         console.log('dealer working')
         return sum
-      }
+      }else {return sum}
     }else {return sum}
   }else {return sum}
 }  
