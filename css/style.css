@@ -22,3 +22,8 @@ div#dealer-hand{
 div#deck{
   align-self: center;
 }
+h2#message{
+  margin-bottom: 50px;
+}
+.hit{
+}

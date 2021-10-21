@@ -105,6 +105,14 @@ function compareValues() {
     render()
   }
 }
+function checkHandValue(theHand) {
+  let sum = 0
+  theHand.forEach((el) => {
+    cardValue = checkCardValue(el)
+    sum = sum + cardValue
+  })
+  return sum
+}
 function starterCards(hand) {
   for (let i = 0; 2 > hand.length; i++) { 
     if (deck.length > 0){
@@ -114,14 +122,6 @@ function starterCards(hand) {
     }
   }
   render()
-}
-function checkHandValue(theHand) {
-  let sum = 0
-  theHand.forEach((el) => {
-    cardValue = checkCardValue(el)
-    sum = sum + cardValue
-  })
-  return sum
 }
 function checkAce(sum) { 
   if (sum === playerSum){
