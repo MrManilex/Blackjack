@@ -7,6 +7,15 @@ body {
 h2 {
   text-align: center;
 }
+.container{
+  display: flex;
+  justify-content: center;
+}
 div#player-hand{
   display: flex;
+  justify-content: center;
+}
+div#dealer-hand{
+  display: flex;
+  justify-content: center;
 }
