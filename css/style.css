@@ -7,8 +7,8 @@ body {
 h2 {
   text-align: center;
 }
-.container{
-  display: flex;
+#playing-field{
+  /* display: flex; */
   justify-content: center;
 }
 div#player-hand{
@@ -18,4 +18,7 @@ div#player-hand{
 div#dealer-hand{
   display: flex;
   justify-content: center;
+}
+div#deck{
+  align-self: center;
 }
