@@ -42,3 +42,6 @@ place-items: center;
 button.start{
   visibility: visible;
 }
+div#container{
+  justify-self: space-between;
+}
