@@ -6,9 +6,7 @@ let isWinner, gameStatus, playerSum, dealerSum,
 card, cardValue, playerDiff, dealerDiff, newArr
 const music = new Audio('audio/Mii_paranoia.mp3')
 const died = new Audio('audio/YOU_DIED_HD.mp3')
-
 /*------------- Variables (state) -------------*/
-
 
 /*--------- Cached Element References ---------*/
 let hitEl = document.querySelector('.hit')
