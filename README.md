@@ -38,3 +38,6 @@ Play the game [here.](https://wangmanlex.github.io/Blackjack/)
 - Results should push to its specific places or arrays.
 
 ## Stretch Goals
+- Creating a brain for the dealer essentially making them draw after player as hit IF their total hand is low
+- More interactive CSS with popup messages telling state of game instead of in the middle
+- Adding animation to cards flips or when cards are first drawn to dealer and player

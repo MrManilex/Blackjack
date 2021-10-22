@@ -4,6 +4,8 @@ let playerHand = []
 let dealerHand = []
 let isWinner, gameStatus, playerSum, dealerSum, 
 card, cardValue, playerDiff, dealerDiff, newArr
+const music = new Audio('audio/Mii_paranoia.mp3')
+const died = new Audio('audio/YOU_DIED_HD.mp3')
 
 /*------------- Variables (state) -------------*/
 
@@ -21,7 +23,7 @@ let canSeeEl = document.getElementById('can-see')
 hitEl.addEventListener('click', playerHit)
 resetEl.addEventListener('click', init)
 standEl.addEventListener('click', playerStand)
-startEl.addEventListener('click', theDeal)
+startEl.addEventListener('click', audioPlay)
 /*----------------- Functions -----------------*/
 init()
 
@@ -38,7 +40,18 @@ function init() {
   resetEl.style.visibility = 'hidden'
   hitEl.disabled = false
   standEl.disabled = false
+  died.pause()
+  music.pause()
   render()
+}
+function audioPlay() {
+  music.volume = .15
+  music.play()
+  theDeal()
+}
+function diedAudio(){
+  died.volume = .20
+  died.play()
 }
 function render() {
   playerHandEl.innerHTML = ''
@@ -62,12 +75,16 @@ function render() {
     dealerHandEl.classList.remove('back-blue')
     if (isWinner === 'dealer'){
       messageEl.innerText = 'you lost what a shame'
+      music.pause()
+      diedAudio()
     }else if (isWinner === 'player'){
       messageEl.innerText = 'WINNER WINNER CHICKEN DINNER'
     }else if (isWinner === 'tie'){
       messageEl.innerText = 'PUSHHHH'
     }else if (isWinner === 'valueOver'){
       messageEl.innerText = 'YOU WENT OVER DUMMYYYY BUUUUUUUUUUST'
+      music.pause()
+      diedAudio()
     }
   }
 }
