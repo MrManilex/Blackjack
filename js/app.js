@@ -41,6 +41,7 @@ function init() {
   hitEl.disabled = false
   standEl.disabled = false
   died.pause()
+  music.currentTime = 0
   music.pause()
   render()
 }
