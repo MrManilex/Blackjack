@@ -32,7 +32,7 @@ function init() {
   playerSum = null
   dealerSum = null
   isWinner = null
-  messageEl.innerText = 'Welcome to the best never-before-seen blackjack game wooooo!! \n \n Hit Start to play what are you waiting for?!?!'
+  messageEl.innerText = '\n Welcome to the best never-before-seen blackjack game wooooo!! \n \n Hit Start to play what are you waiting for?!?!'
   canSeeEl.style.visibility = 'hidden'
   startEl.style.visibility = 'visible'
   resetEl.style.visibility = 'hidden'
@@ -173,10 +173,3 @@ function checkCardValue(card) {
   else if (card === 'd02' || card === 'h02' || card === 'c02' || card === 's02'){ cardValue = 2}
   return cardValue
 }
-
-// Bust - basically losing (if hand is over 21)
-// Hit - drawing an extra card
-// Stand - to not take any further cards - also known as 'sitting'.
-// Push - DRAWWW (card value is evenly matched for both players)
-// Upcard - the dealer's exposed card, seen by all players.
-// Hole Card - the dealer's unseen card.
