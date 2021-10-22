@@ -79,8 +79,6 @@ function theDeal () {
   newDealerSum = checkAce(dealerSum)
   playerDiff = 21 - newPlayerSum
   dealerDiff = 21 - newDealerSum
-  console.log(`The dealer's sum is ${newDealerSum} and their hand is ${dealerHand}`)
-  console.log(`The player's sum is ${newPlayerSum} and their hand is ${playerHand}`)
   messageEl.innerText = 'Hit? or Stand?'
   if (playerSum > 21){
     isWinner = 'valueOver'
