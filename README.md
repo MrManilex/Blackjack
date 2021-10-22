@@ -5,6 +5,9 @@ Create a browser game simulating Blackjack
 ### Getting Started:
 Play the game [here.](https://wangmanlex.github.io/Blackjack/)
 
+## Motivation:
+### I went into this project not knowing how to play Blackjack. I found the game logic behind Blackjack to be interesting as theres many conditionals to be covered.
+
 ## Prototypes/Wireframing
 ### Wireframe:
 
@@ -16,7 +19,11 @@ Play the game [here.](https://wangmanlex.github.io/Blackjack/)
 
 ### Game after styling:
 
+#### Game before starting:
+![game-before-start](assets/Screenshot%20from%202021-10-22%2010-01-06.png)
 
+#### Game after starting:
+![game-after-start](assets/Screenshot%20from%202021-10-22%2010-01-15.png)
 
 ## Technology implemented:
 * Javascript
@@ -25,6 +32,9 @@ Play the game [here.](https://wangmanlex.github.io/Blackjack/)
 * Git
 * bootstrap
 
+## Credits
+- Background music when starting: [Mii channel theme but each pause descends you further to paranoia](https://www.youtube.com/watch?v=EmOSk2wi0WI)
+- Losing sound: [YOU DIED (HD)](https://www.youtube.com/watch?v=-ZGlaAxB7nI)
 ## Psuedocode:
 - Define constants and variables such as card deck, player hand/computer hand, is winner , and center message.
 - Add event listeners to draw button and reset button.
@@ -41,3 +51,4 @@ Play the game [here.](https://wangmanlex.github.io/Blackjack/)
 - Creating a brain for the dealer essentially making them draw after player as hit IF their total hand is low
 - More interactive CSS with popup messages telling state of game instead of in the middle
 - Adding animation to cards flips or when cards are first drawn to dealer and player
+- Adding GIFs or videos that display when game winner has been decided
