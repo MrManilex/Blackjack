@@ -107,10 +107,6 @@ function compareValues() {
       render()
     }
   }
-  if (playerSum > 21){
-    isWinner = 'valueOver'
-    render()
-  }
 }
 function checkHandValue(theHand) {
   let sum = 0
