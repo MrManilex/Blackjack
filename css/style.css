@@ -8,8 +8,9 @@ h2 {
   text-align: center;
 }
 #playing-field{
-  /* display: flex; */
+  display: grid;
   justify-content: center;
+  /* grid-template-rows: 90px 90px; */
 }
 div#player-hand{
   display: flex;
@@ -26,18 +27,18 @@ h2#message{
   margin-bottom: 50px;
 }
 #start-container{
-  display: flex;
+  display: grid;
   justify-content: center;
 }
 #can-see{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   visibility: visible;
 }
 button.reset{
-  justify-self: start;
-  align-self: center;
+  justify-self: center;
+place-items: center;
 }
-/* button.start{
-  justify-content: center;
-} */
+button.start{
+  visibility: visible;
+}

@@ -16,6 +16,7 @@ let messageEl = document.getElementById('message')
 let playerHandEl = document.getElementById('player-hand')
 let dealerHandEl = document.getElementById('dealer-hand')
 let startEl = document.querySelector('.start')
+let canSeeEl = document.getElementById('can-see')
 /*-------------- Event Listeners --------------*/
 hitEl.addEventListener('click', playerHit)
 resetEl.addEventListener('click', init)
@@ -31,7 +32,10 @@ function init() {
   playerSum = null
   dealerSum = null
   isWinner = null
-  messageEl.innerText = 'Welcome to the best never before seen blackjack game wooooo!! Hit start to play what are you waiting for?!?!'
+  messageEl.innerText = 'Welcome to the best never-before-seen blackjack game wooooo!! \n \n Hit Start to play what are you waiting for?!?!'
+  canSeeEl.style.visibility = 'hidden'
+  startEl.style.visibility = 'visible'
+  resetEl.style.visibility = 'hidden'
   render()
 }
 function render() {
@@ -64,6 +68,9 @@ function render() {
   }
 }
 function theDeal () {
+  canSeeEl.style.visibility = 'visible'
+  startEl.style.visibility = 'hidden'
+  resetEl.style.visibility = 'visible'
   starterCards(dealerHand)
   starterCards(playerHand)
   playerSum = checkHandValue(playerHand)
