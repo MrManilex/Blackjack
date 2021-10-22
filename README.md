@@ -52,3 +52,4 @@ Play the game [here.](https://wangmanlex.github.io/Blackjack/)
 - More interactive CSS with popup messages telling state of game instead of in the middle
 - Adding animation to cards flips or when cards are first drawn to dealer and player
 - Adding GIFs or videos that display when game winner has been decided
+- Eventually add a rule book helping those who do not know how to play
