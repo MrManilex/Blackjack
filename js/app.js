@@ -36,6 +36,8 @@ function init() {
   canSeeEl.style.visibility = 'hidden'
   startEl.style.visibility = 'visible'
   resetEl.style.visibility = 'hidden'
+  hitEl.disabled = false
+  standEl.disabled = false
   render()
 }
 function render() {
@@ -54,6 +56,8 @@ function render() {
   myDivChildren = dealerHandEl.children
   myDivChildren[1].classList.remove('back-blue')
   if(isWinner !== null){
+  hitEl.disabled = true
+  standEl.disabled = true
   myDivChildren[0].classList.remove('back-blue')
     dealerHandEl.classList.remove('back-blue')
     if (isWinner === 'dealer'){
