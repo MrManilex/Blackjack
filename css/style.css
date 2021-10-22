@@ -25,5 +25,19 @@ div#deck{
 h2#message{
   margin-bottom: 50px;
 }
-.hit{
+#start-container{
+  display: flex;
+  justify-content: center;
 }
+#can-see{
+  display: flex;
+  justify-content: center;
+  visibility: visible;
+}
+button.reset{
+  justify-self: start;
+  align-self: center;
+}
+/* button.start{
+  justify-content: center;
+} */

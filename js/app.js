@@ -12,14 +12,15 @@ card, cardValue, playerDiff, dealerDiff, newArr
 let hitEl = document.querySelector('.hit')
 let resetEl = document.querySelector('.reset')
 let standEl = document.querySelector('.stand')
-let message = document.getElementById('message')
+let messageEl = document.getElementById('message')
 let playerHandEl = document.getElementById('player-hand')
 let dealerHandEl = document.getElementById('dealer-hand')
-
+let startEl = document.querySelector('.start')
 /*-------------- Event Listeners --------------*/
 hitEl.addEventListener('click', playerHit)
 resetEl.addEventListener('click', init)
 standEl.addEventListener('click', playerStand)
+startEl.addEventListener('click', theDeal)
 /*----------------- Functions -----------------*/
 init()
 
@@ -30,7 +31,8 @@ function init() {
   playerSum = null
   dealerSum = null
   isWinner = null
-  theDeal()
+  messageEl.innerText = 'Welcome to the best never before seen blackjack game wooooo!! Hit start to play what are you waiting for?!?!'
+  render()
 }
 function render() {
   playerHandEl.innerHTML = ''
@@ -51,13 +53,13 @@ function render() {
   myDivChildren[0].classList.remove('back-blue')
     dealerHandEl.classList.remove('back-blue')
     if (isWinner === 'dealer'){
-      message.innerText = 'you lost what a shame'
+      messageEl.innerText = 'you lost what a shame'
     }else if (isWinner === 'player'){
-      message.innerText = 'WINNER WINNER CHICKEN DINNER'
+      messageEl.innerText = 'WINNER WINNER CHICKEN DINNER'
     }else if (isWinner === 'tie'){
-      message.innerText = 'PUSHHHH'
+      messageEl.innerText = 'PUSHHHH'
     }else if (isWinner === 'valueOver'){
-      message.innerText = 'YOU WENT OVER DUMMYYYY BUUUUUUUUUUST'
+      messageEl.innerText = 'YOU WENT OVER DUMMYYYY BUUUUUUUUUUST'
     }
   }
 }
@@ -72,7 +74,7 @@ function theDeal () {
   dealerDiff = 21 - newDealerSum
   console.log(`The dealer's sum is ${newDealerSum} and their hand is ${dealerHand}`)
   console.log(`The player's sum is ${newPlayerSum} and their hand is ${playerHand}`)
-  message.innerText = 'Hit? or Stand?'
+  messageEl.innerText = 'Hit? or Stand?'
   if (playerSum > 21){
     isWinner = 'valueOver'
     render()
@@ -131,7 +133,6 @@ function checkAce(sum) {
     playerHand.includes('sA') === true){
       if(sum <= 11){
         sum += 10
-        console.log('player working')
         return sum
       }else {return sum}
     }else {return sum}
@@ -142,7 +143,6 @@ function checkAce(sum) {
     dealerHand.includes('sA') === true){
       if(sum <= 11){
         sum += 10
-        console.log('dealer working')
         return sum
       }else {return sum}
     }else {return sum}
