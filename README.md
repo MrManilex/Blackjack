@@ -3,7 +3,7 @@
 Create a browser game simulating Blackjack
 
 ### Getting Started:
-Play the game [here.](https://wangmanlex.github.io/Blackjack/)
+Play the game [here.](https://mrmanilex.github.io/Blackjack/)
 
 ## Motivation:
 ### I went into this project not knowing how to play Blackjack. I found the game logic behind Blackjack to be interesting as theres many conditionals to be covered.
